@@ -1,0 +1,25 @@
+{
+    "name": "digital-library-ledger",
+    "version": "1.0.0",
+    "description": "A web server for managing a digital library ledger, supporting CRUD operations for books, members, and staff.",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js",
+      "test": "jest"
+    },
+    "keywords": ["nodejs", "express", "mongodb", "library", "crud"],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+      "dotenv": "^16.0.3",
+      "express": "^4.18.3",
+      "mongoose": "^7.6.3"
+    },
+    "devDependencies": {
+      "jest": "^29.7.0",
+      "nodemon": "^2.0.22",
+      "supertest": "^6.3.3"
+    }
+  }
+  
