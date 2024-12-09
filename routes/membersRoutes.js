@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const memberController = require("../controllers/memberController");
+const memberController = require("../controllers/membersController");
 
 // Route to create a new library member
 router.post("/", memberController.createMember);
