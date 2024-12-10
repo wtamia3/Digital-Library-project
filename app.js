@@ -1,25 +1,23 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const booksRouter = require('./routes/booksRoutes');
-const membersRouter = require('./routes/membersRoutes');
-const staffRouter = require('./routes/staffRoutes');
+const port = process.env.PORT || 3000;
 
-// Connection string for MongoDB Atlas
-const mongoURI = 'mongodb+srv://tamiawilliams0618:ooEbj4oNA3XTDhbc@cluster0.mongodb.net/digital-library?retryWrites=true&w=majority';
-
-mongoose.connect(mongoURI)
-  .then(() => console.log('Database connected successfully'))
-  .catch(err => console.error('Database connection error:', err));
-
+// Middleware
 app.use(express.json());
-app.use('/books', booksRouter);
-app.use('/members', membersRouter);
-app.use('/staff', staffRouter);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// MongoDB connection
+const mongoURI = 'mongodb+srv://tamiawilliams0618:ooEbj4oNA3XTDhbc@cluster0.mongodb.net/digital-library?retryWrites=true&w=majority';
+mongoose.connect(mongoURI)
+  .then(() => console.log('MongoDB connected...'))
+  .catch(err => console.log('Database connection error:', err));
+
+// Routes
+app.get('/', (req, res) => {
+  res.send('Hello World!');
 });
 
-module.exports = app;
+// Start server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
