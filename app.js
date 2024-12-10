@@ -4,13 +4,13 @@ const booksRouter = require('./routes/booksRoutes');
 const membersRouter = require('./routes/membersRoutes');
 const staffRouter = require('./routes/staffRoutes');
 const app = express();
-const port = process.env.PORT || 3001; // Changed port to 3001
+const port = process.env.PORT || 3004; 
 
 // Middleware
 app.use(express.json());
 
 // MongoDB connection
-const mongoURI = 'mongodb+srv://tamiawilliams0618:ooEbj4oNA3XTDhbc@cluster0.mongodb.net/digital-library?retryWrites=true&w=majority';
+const mongoURI = 'mongodb+srv://tamiawilliams0618:ooEbj4oNA3XTDhbc@cluster0.ptks2.mongodb.net/digital-library?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(mongoURI)
   .then(() => console.log('MongoDB connected...'))
   .catch(err => console.log('Database connection error:', err));
@@ -20,9 +20,9 @@ app.use('/books', booksRouter);
 app.use('/members', membersRouter);
 app.use('/staff', staffRouter);
 
-// Routes
+// Default route
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Welcome to the Digital Library!');
 });
 
 // Start server
