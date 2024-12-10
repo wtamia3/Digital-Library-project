@@ -10,6 +10,16 @@ exports.createBook = async (req, res) => {
   }
 };
 
+exports.createMultipleBooks = async (req, res) => {
+  try {
+    const books = req.body; 
+    const newBooks = await Book.insertMany(books);
+    res.status(201).send(newBooks);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
 exports.getAllBooks = async (req, res) => {
   try {
     const books = await Book.find({});
