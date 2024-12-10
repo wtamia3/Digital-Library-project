@@ -1,7 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const booksRouter = require('./routes/booksRoutes');
+const membersRouter = require('./routes/membersRoutes');
+const staffRouter = require('./routes/staffRoutes');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001; // Changed port to 3001
 
 // Middleware
 app.use(express.json());
@@ -11,6 +14,11 @@ const mongoURI = 'mongodb+srv://tamiawilliams0618:ooEbj4oNA3XTDhbc@cluster0.mong
 mongoose.connect(mongoURI)
   .then(() => console.log('MongoDB connected...'))
   .catch(err => console.log('Database connection error:', err));
+
+// Use routes
+app.use('/books', booksRouter);
+app.use('/members', membersRouter);
+app.use('/staff', staffRouter);
 
 // Routes
 app.get('/', (req, res) => {
